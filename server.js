@@ -13,7 +13,8 @@ app.use(logger('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb://localhost/places');
+const mongoURI = process.env.MONGODB_URI;
+mongoose.connect(mongoURI);
 mongoose.connection.on('error', () => {
   console.error('MongoDB Connection Error. Make sure MongoDB is running.');
 });
